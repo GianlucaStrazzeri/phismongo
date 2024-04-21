@@ -14,9 +14,13 @@ const PatientController={
     async getAllPatientsSsr(req,res){
         try{
             const patients=await Patient.find();
+            
             res.send(
                 `
+                <div style="background-color:blue">
                 <h1>Todos los pacientes</h1>
+                </div>
+                
                 <a href="/patient/create/form"><button>Crea nuevo paciente</button></a>
                 <ol>
                 ${patients.map(patient=> {
@@ -79,16 +83,33 @@ const PatientController={
         try{
             res.send(
                 `
+
                 <a href="/patients/ssr">Home</a>
+
             <h1>Crea un paciente</h1>
                 <form action="/patient/create" method="POST">
+                <div>
+                <label for="name">Nombre</label>
                 <input type="text"placeholder="Nombre" name="nombre"></input>
+                </div><div>
+                <label for="name">Apellido</label>
                 <input type="text"placeholder="Apellido" name="apellido"></input>
+                </div><div>
+                <label for="name">Movil</label>
                 <input type="number"placeholder="Numero de movil" name="telefono"></input>
+                </div><div>
+                <label for="name">Edad</label>
                 <input type="number"placeholder="Edad" name="edad"></input>
+                </div><div>
+                <label for="name">Sexo</label>
                 <input type="text"placeholder="Genero" name="genero"></input>
+                </div><div>
+                <label for="name">Dirección</label>
                 <input type="text"placeholder="Dirección" name="direccion"></input>
-                <input type="text"placeholder="Historial Clinico" name="historialMedico"></input>
+                </div><div>
+                <label for="name">Historial</label>
+                <textarea type="text"placeholder="Historial Clinico" name="historialMedico"></textarea>
+                </div>
                 <button type="submit">Guardar Paciente</button>
                 </form>
                 `
