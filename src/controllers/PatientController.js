@@ -17,7 +17,8 @@ const PatientController={
             res.send(
                 `
                 <h1>Todos los pacientes</h1>
-                <ul>
+                <a href="/patient/create/form"><button>Crea nuevo paciente</button></a>
+                <ol>
                 ${patients.map(patient=> {
                     return(
                         `
@@ -30,7 +31,7 @@ const PatientController={
                 )}).join('')}
             
                 
-                </ul>
+                </ol>
                 `
             )
         }catch (error){
@@ -78,6 +79,7 @@ const PatientController={
         try{
             res.send(
                 `
+                <a href="/patients/ssr">Home</a>
             <h1>Crea un paciente</h1>
                 <form action="/patient/create" method="POST">
                 <input type="text"placeholder="Nombre" name="nombre"></input>
