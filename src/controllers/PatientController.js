@@ -24,6 +24,7 @@ const PatientController={
                         <div>
                     ${patient.nombre}
                     ${patient.apellido}
+                    <a href="/patient/ssr/${patient._id}">${patient.nombre}</a>
                         </div>
                     `
                 )}).join('')}
