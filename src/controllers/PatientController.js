@@ -26,7 +26,16 @@ const PatientController={
                 ${patients.map(patient=> {
                     return(
                         `
-                        <div>
+                        <div 
+                        style=
+                        "
+                        display:flex;
+                        justify-content:center;
+                        gap:20px;
+                        border:1px  solid black; 
+                        padding: 2px 2px 2px 2px;
+                        margin: 2px 2px 2px 2px;
+                        ">
                     ${patient.nombre}
                     ${patient.apellido}
                     <a href="/patient/ssr/${patient._id}">${patient.nombre}</a>
@@ -87,31 +96,113 @@ const PatientController={
                 <a href="/patients/ssr">Home</a>
 
             <h1>Crea un paciente</h1>
+
+            <div style=
+            "
+            display:flex;
+            justify-content:center;
+            gap:20px;
+            border:1px solid black;
+            "
+            >
+
                 <form action="/patient/create" method="POST">
-                <div>
+                <div style=
+                "
+                display:flex;
+                align-items:center; 
+                gap:10px; 
+                flex-direction: column;
+                "
+                >
+
+
                 <label for="name">Nombre</label>
                 <input type="text"placeholder="Nombre" name="nombre"></input>
-                </div><div>
+                </div>
+                <div style=
+                "
+                display:flex;
+                align-items:center; 
+                gap:10px; 
+                flex-direction: column;
+                "
+                >
+
+
                 <label for="name">Apellido</label>
                 <input type="text"placeholder="Apellido" name="apellido"></input>
-                </div><div>
+                </div>
+                <div style=
+                "
+                display:flex;
+                align-items:center; 
+                gap:10px; 
+                flex-direction: column;
+                "
+                >
+
+
                 <label for="name">Movil</label>
                 <input type="number"placeholder="Numero de movil" name="telefono"></input>
-                </div><div>
+                </div>
+                <div style=
+                "
+                display:flex;
+                align-items:center; 
+                gap:10px; 
+                flex-direction: column;
+                "
+                >
+
+
                 <label for="name">Edad</label>
                 <input type="number"placeholder="Edad" name="edad"></input>
-                </div><div>
+                </div>
+                <div style=
+                "
+                display:flex;
+                align-items:center; 
+                gap:10px; 
+                flex-direction: column;
+                "
+                >
+
+
                 <label for="name">Sexo</label>
                 <input type="text"placeholder="Genero" name="genero"></input>
-                </div><div>
+                </div>
+                <div style=
+                "
+                display:flex;
+                align-items:center; 
+                gap:10px; 
+                flex-direction: column;
+                "
+                >
+
+
                 <label for="name">Dirección</label>
                 <input type="text"placeholder="Dirección" name="direccion"></input>
-                </div><div>
+                </div>
+                <div style=
+                "
+                display:flex;
+                align-items:center; 
+                gap:10px; 
+                flex-direction: column;
+                "
+                >
+
+
                 <label for="name">Historial</label>
                 <textarea type="text"placeholder="Historial Clinico" name="historialMedico"></textarea>
                 </div>
-                <button type="submit">Guardar Paciente</button>
+                <div style="display:flex; justify-content:center;">
+                <button type="submit" >Guardar Paciente</button>
+                </div>
                 </form>
+                </div>
                 `
         )
 
