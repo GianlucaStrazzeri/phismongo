@@ -23,7 +23,8 @@ const patientSchema = new Schema({
   },
   direccion: {
     type: String,
-    required: false
+    required: false,
+    default:" "
   },
   telefono: {
     type: Number,

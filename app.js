@@ -2,8 +2,8 @@ const express = require('express');//requiero express
 const app = express();//inicializo express
 const PORT=process.env.PORT||3000;//defino el puerto de esta forma para que pueda luego exportarlo para la conexión base de datos
 
-const {dbConnection}= require("./config/config.js") //requiero connexión database 
-const {router} =require ("./routes/mainRoutes.js")//requiero el router desde mainRoutes
+const {dbConnection}= require("./src/config/config.js") //requiero connexión database 
+const {router} =require ("./src/routes/mainRoutes.js")//requiero el router desde mainRoutes
 dbConnection() //invoco la función antes de cualquier middleware para que no se reconecte a cada request
 
 app.use(express.json());//Sirve como un middleware para todas las rutas, only parses JSON and only looks at requests where the Content-Type header matches the type option
