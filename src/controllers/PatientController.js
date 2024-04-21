@@ -63,7 +63,9 @@ const PatientController={
               <li>Historial Medico: ${patient.historialMedico}</li>
               </ul>
               </div>
-              
+              <form action="/patients/${id}" method="POST">
+                <button type="submit">Borrar</button>
+              </form>
               `
             );
         } catch (error) {
