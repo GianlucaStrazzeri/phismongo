@@ -37,6 +37,7 @@ const PatientController={
             console.error(error);
         }
     },
+
     async getOnePatientSsr (req, res)  {
         try {
             const id = req.params._id;
@@ -73,6 +74,26 @@ const PatientController={
         }
     },
 
+    async createNewPatientForm(req,res){
+        try{
+            res.send(
+                `
+            <h1>Crea un paciente</h1>
+                <form action="/patient/create" method="POST">
+                <input type="text"placeholder="Nombre" name="nombre"></input>
+                <input type="text"placeholder="Apellido" name="apellido"></input>
+                <input type="number"placeholder="Numero de movil" name="telefono"></input>
+                <input type="number"placeholder="Edad" name="edad"></input>
+                <input type="text"placeholder="Genero" name="genero"></input>
+                <input type="text"placeholder="Dirección" name="direccion"></input>
+                <input type="text"placeholder="Historial Clinico" name="historialMedico"></input>
+                <button type="submit">Guardar Paciente</button>
+                </form>
+                `
+        )
+
+        }catch(error){console.log(error)}
+    },
 
     async createNewPatient (req,res){
         try {
@@ -96,7 +117,12 @@ const PatientController={
           if (!deletedPatient) {
             return res.status(404).json({message: "Patient with that id not found"})
           }  
-          res.json({message: "Patient deleted successfully", deletedPatient})
+         // res.json({message: "Patient deleted successfully", deletedPatient})
+          res.send(
+            `
+            <p>  Patient deleted successfully, ${deletedPatient}</p>
+          <a href="/patients/ssr">Home</a>
+          `)
           
         } catch (error) {
             console.log(error)

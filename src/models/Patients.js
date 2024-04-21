@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const patientSchema = new Schema({
   nombre: {
     type: String,
-    required: true
+    required: false
   },
   apellido: {
     type: String,
@@ -18,7 +18,6 @@ const patientSchema = new Schema({
   },
   genero: {
     type: String,
-    enum: ['Masculino', 'Femenino', 'Otro'],
     required: false
   },
   direccion: {
