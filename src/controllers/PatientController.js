@@ -249,12 +249,32 @@ const PatientController={
 
     async createNewPatient (req,res){
         try {
-            const patients= await Patient.create({...req.body})
+            const patient= await Patient.create({...req.body})
             res.send(`
+            
+            <h2 style="
+            display:flex; justify-content:center;
+            ">
+            Nombre: ${patient.nombre} Creado con exito!
+            </h2>
+            
+            <div style="display:flex; justify-content:center; gap:20px;">
+            <ul>
+            <li>Nombre: ${patient.nombre} </li>
+            <li>Apellido: ${patient.apellido}</li>
+            <li>Edad: ${patient.edad}</li>
+            <li>Genero: ${patient.genero}</li>
+            <li>Dirección: ${patient.direccion}</li>
+            <li>Historial Medico: ${patient.historialMedico}</li>
+            <li> ID: ${patient._id}</li>
+            </ul>
+            </div>
 
-            <p>${patients} creado con exito! </p>
+
+            <div style="display:flex; justify-content:center; gap:20px;">
             <a href="/patients/ssr" >Vuelve a la home</a>
             <a href="/patient/create/form" >Crea otro paciente</a>
+            </div>
             `)
         res.status(201).json(patients)
         }catch(error){console.log(error)}
@@ -266,6 +286,27 @@ const PatientController={
             const patient= await Patient.findById(id)
             res.send(patient)
         }catch(error){console.log(error)}
+    },
+
+    async deletePatient (req, res) {
+        try {
+          const id = req.params._id
+          const deletedPatient = await Patient.findByIdAndDelete(id)
+          if (!deletedPatient) {
+            return res.status(404).json({message: "Patient with that id not found"})
+          }  
+         // res.json({message: "Patient deleted successfully", deletedPatient})
+          res.send(
+            `
+            <p>  Patient deleted successfully, ${deletedPatient}</p>
+          <a href="/patients/ssr">Home</a>
+          <a href="/patient/create/form"><button>Crea un nuevo paciente</button></a>
+          `)
+          
+        } catch (error) {
+            console.log(error)
+            res.status(500).json({ error: "Internal server error" });
+        }
     },
 
     async getLogin (req,res){
@@ -288,27 +329,7 @@ const PatientController={
                 `
             )
         }catch(error){console.log(error)}
-    },
-
-    async deletePatient (req, res) {
-        try {
-          const id = req.params._id
-          const deletedPatient = await Patient.findByIdAndDelete(id)
-          if (!deletedPatient) {
-            return res.status(404).json({message: "Patient with that id not found"})
-          }  
-         // res.json({message: "Patient deleted successfully", deletedPatient})
-          res.send(
-            `
-            <p>  Patient deleted successfully, ${deletedPatient}</p>
-          <a href="/patients/ssr">Home</a>
-          `)
-          
-        } catch (error) {
-            console.log(error)
-            res.status(500).json({ error: "Internal server error" });
-        }
-    },
+    }
 }
 
 module.exports= PatientController;
