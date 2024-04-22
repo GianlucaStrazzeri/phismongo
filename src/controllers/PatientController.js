@@ -24,6 +24,7 @@ const PatientController={
                 align-items:center;
                 ">
                 <h1>HomePage</h1>
+                <a href="/login"><button>Login</button></a>
                 <a href="/patient/create/form"><button>Crea nuevo paciente</button></a>
                 <h2>Todos los pacientes </h2>
                 <input type="text" placeholder="Buscar Paciente"></input>
