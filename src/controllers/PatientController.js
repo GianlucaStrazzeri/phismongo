@@ -19,15 +19,16 @@ const PatientController={
                 `
                 
                 <div style="
-                background: rgb(2,0,36);
-                background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(223,53,38,1) 14%, rgba(0,212,255,1) 53%);
                 display:flex;
-                justify-content:center;
+                flex-direction:column;
+                align-items:center;
                 ">
-                <h1>Todos los pacientes</h1>
-                </div>
-                
+                <h1>HomePage</h1>
                 <a href="/patient/create/form"><button>Crea nuevo paciente</button></a>
+                <h2>Todos los pacientes </h2>
+                <input type="text" placeholder="Buscar Paciente"></input>
+                </div>
+
                 <ol>
                 ${patients.map(patient=> {
                     return(
@@ -38,13 +39,11 @@ const PatientController={
                         display:flex;
                         justify-content:center;
                         gap:20px;
-                        border:1px  solid black; 
                         padding: 2px 2px 2px 2px;
                         margin: 2px 2px 2px 2px;
                         ">
-                    ${patient.nombre}
-                    ${patient.apellido}
-                    <a href="/patient/ssr/${patient._id}">${patient.nombre}</a>
+                    
+                    <a href="/patient/ssr/${patient._id}">${patient.nombre} ${patient.apellido}</a>
                         </div>
                     `
                 )}).join('')}
@@ -73,8 +72,14 @@ const PatientController={
                       <title>Paciente</title>
                     </head>
                     <body>
-                    <a href="/patients/ssr">Home</a>
-              <div>
+                    
+              <div style="
+              display:flex; 
+              flex-direction:column; 
+              align-items:center;
+              border: 1px solid black;
+              ">
+              <a href="/patients/ssr">Home</a>
               <ul>
               <li>Nombre: ${patient.nombre}</li>
               <li>Apellido: ${patient.apellido}</li>
@@ -82,11 +87,13 @@ const PatientController={
               <li>Genero: ${patient.genero}</li>
               <li>Dirección: ${patient.direccion}</li>
               <li>Historial Medico: ${patient.historialMedico}</li>
+              <li> ID: ${patient._id}</li>
               </ul>
-              </div>
+              
               <form action="/patients/${id}" method="POST">
                 <button type="submit">Borrar</button>
               </form>
+              </div>
               `
             );
         } catch (error) {
