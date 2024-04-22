@@ -250,6 +250,12 @@ const PatientController={
     async createNewPatient (req,res){
         try {
             const patients= await Patient.create({...req.body})
+            res.send(`
+
+            <p>${patients} creado con exito! </p>
+            <a href="/patients/ssr" >Vuelve a la home</a>
+            <a href="/patient/create/form" >Crea otro paciente</a>
+            `)
         res.status(201).json(patients)
         }catch(error){console.log(error)}
     },
