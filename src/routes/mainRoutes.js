@@ -10,6 +10,7 @@ router.get('/patients/ssr', PatientController.getAllPatientsSsr )//Devuelve  tod
 router.get("/patient/:_id",PatientController.getOnePatient)//Devuelve un paciente por su id
 router.get("/patient/ssr/:_id",PatientController.getOnePatientSsr)//Devuelve un paciente por su id
 router.get("/patient/create/form",PatientController.createNewPatientForm)//Formulario para crear nuevos Pacientes
+router.get("/login",PatientController.getLogin)//Get Login
 router.post("/patient/create", PatientController.createNewPatient)//Crea un nuevo paciente
 router.post("/patients/:_id",PatientController.deletePatient)//Elimina un producto desde su pagina, los formularios en html, solo tienen dos métodos:get y post por eso no se utilza router.delete
 

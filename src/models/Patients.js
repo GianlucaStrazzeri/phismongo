@@ -32,6 +32,14 @@ const patientSchema = new Schema({
   historialMedico: {
     type: String,
     default: ''
+  },
+  correoElectronico:{
+    type: String,
+    default:""
+  },
+  fecha:{
+    type:String,
+    default:""
   }
   
 });

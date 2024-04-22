@@ -17,7 +17,13 @@ const PatientController={
             
             res.send(
                 `
-                <div style="background-color:blue">
+                
+                <div style="
+                background: rgb(2,0,36);
+                background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(223,53,38,1) 14%, rgba(0,212,255,1) 53%);
+                display:flex;
+                justify-content:center;
+                ">
                 <h1>Todos los pacientes</h1>
                 </div>
                 
@@ -95,14 +101,12 @@ const PatientController={
 
                 <a href="/patients/ssr">Home</a>
 
-            <h1>Crea un paciente</h1>
+            <h1 style="text-align:center">Crea un paciente</h1>
 
             <div style=
             "
             display:flex;
             justify-content:center;
-            gap:20px;
-            border:1px solid black;
             "
             >
 
@@ -111,7 +115,7 @@ const PatientController={
                 "
                 display:flex;
                 align-items:center; 
-                gap:10px; 
+                gap:1px; 
                 flex-direction: column;
                 "
                 >
@@ -124,7 +128,7 @@ const PatientController={
                 "
                 display:flex;
                 align-items:center; 
-                gap:10px; 
+                gap:1px; 
                 flex-direction: column;
                 "
                 >
@@ -137,7 +141,7 @@ const PatientController={
                 "
                 display:flex;
                 align-items:center; 
-                gap:10px; 
+                gap:1px; 
                 flex-direction: column;
                 "
                 >
@@ -150,7 +154,7 @@ const PatientController={
                 "
                 display:flex;
                 align-items:center; 
-                gap:10px; 
+                gap:1px; 
                 flex-direction: column;
                 "
                 >
@@ -163,7 +167,7 @@ const PatientController={
                 "
                 display:flex;
                 align-items:center; 
-                gap:10px; 
+                gap:1px; 
                 flex-direction: column;
                 "
                 >
@@ -172,29 +176,55 @@ const PatientController={
                 <label for="name">Sexo</label>
                 <input type="text"placeholder="Genero" name="genero"></input>
                 </div>
+
+
                 <div style=
                 "
                 display:flex;
                 align-items:center; 
-                gap:10px; 
+                gap:1px; 
                 flex-direction: column;
                 "
                 >
-
-
                 <label for="name">Dirección</label>
                 <input type="text"placeholder="Dirección" name="direccion"></input>
                 </div>
+
+
                 <div style=
                 "
                 display:flex;
                 align-items:center; 
-                gap:10px; 
+                gap:1px; 
                 flex-direction: column;
                 "
                 >
+                <label for="name">Correo Electronico</label>
+                <input type="text"placeholder="Correo Electronico" name="CorreoElectronico"></input>
+                </div>
 
 
+                <div style=
+                "
+                display:flex;
+                align-items:center; 
+                gap:1px; 
+                flex-direction: column;
+                "
+                >
+                <label for="name">Fecha</label>
+                <input type="date"placeholder="Fecha" name=fecha"></input>
+                </div>
+
+
+                <div style=
+                "
+                display:flex;
+                align-items:center; 
+                gap:1px; 
+                flex-direction: column;
+                "
+                >
                 <label for="name">Historial</label>
                 <textarea type="text"placeholder="Historial Clinico" name="historialMedico"></textarea>
                 </div>
@@ -221,6 +251,28 @@ const PatientController={
             const id=req.params._id
             const patient= await Patient.findById(id)
             res.send(patient)
+        }catch(error){console.log(error)}
+    },
+
+    async getLogin (req,res){
+        try{
+            res.send(
+                `
+                <div style="display:flex; flex-direction:column; align-items:center;">
+                <a href="/patients/ssr">Home</a>
+                <h1>Login</h1>
+                <p> Have you got an account? </p>
+                <form>
+                <input type="text" name="username" placeholder="username"></input>
+                <input type="text" name="email" placeholder="email"></input>
+                </form>
+                <p> Do you need to Sign up? </p>
+                <button>Register with Google</button>
+                <button>Register with Email </button>
+                </div>
+
+                `
+            )
         }catch(error){console.log(error)}
     },
 
