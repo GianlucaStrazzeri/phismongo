@@ -1,6 +1,6 @@
 //mainRoutes se encarga de gestionar el enrutamiento de forma visual, la parte funcional se encontrará en controllers
 
-const express = require('express') //requiero express
+const express = require ('express') //requiero express
 const router = express.Router() //inicializo enrutador de express
 const PatientController = require('../controllers/PatientController.js') //requiero PatientController para hacer funcionar los controladores
 
