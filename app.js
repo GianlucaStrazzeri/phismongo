@@ -8,7 +8,9 @@ const {dbConnection}= require("./src/config/db.js") //requiero connexión databa
 const {router} =require ("./src/routes/mainRoutes.js")//requiero el router desde mainRoutes
 dbConnection() //invoco la función antes de cualquier middleware para que no se reconecte a cada request
 app.disable('x-powered-by');//practica de seguridad para que no recibir ataques en cabeceras de express
-app.use(cors())
+
+
+app.use(cors())//nos va a permitir acceder de otros ip diferentes
 app.use(express.json());//Sirve como un middleware para todas las rutas, only parses JSON and only looks at requests where the Content-Type header matches the type option
 app.use(express.urlencoded({extended:true})); //Sirve como un middleware para todas las rutas, only parses urlencoded bodies and only looks at requests where the Content-Type header matches the type option. This parser accepts only UTF-8 encoding of the body .
 //{extended:true} sirve para corregir el error body-parser deprecated undefined extended: provide extended option

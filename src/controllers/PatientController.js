@@ -1,5 +1,6 @@
 //Aquí estará cada  endpoint con su funcionalidad
-const {Patient} =require ("../models/Patients")// requiero los products de models
+const {Patient} =require ("../models/Patients")// requiero los pacientes de models
+const {User} =require ("../models/Users")// requiero los usuarios de models
 
 const PatientController={
     async getAllPatients (req, res)  {
@@ -27,7 +28,7 @@ const PatientController={
                 <a href="/login"><button>Login</button></a>
                 <a href="/patient/create/form"><button>Crea nuevo paciente</button></a>
                 <h2>Todos los pacientes </h2>
-                <input type="text" placeholder="Buscar Paciente"></input>
+              
                 </div>
 
                 <ol>
@@ -130,7 +131,7 @@ const PatientController={
 
 
                 <label for="name">Nombre</label>
-                <input type="text"placeholder="Nombre" name="nombre"></input>
+                <input type="text" placeholder="Nombre" name="nombre"></input>
                 </div>
                 <div style=
                 "
@@ -307,29 +308,12 @@ const PatientController={
             console.log(error)
             res.status(500).json({ error: "Internal server error" });
         }
-    },
-
-    async getLogin (req,res){
-        try{
-            res.send(
-                `
-                <div style="display:flex; flex-direction:column; align-items:center;">
-                <a href="/patients/ssr">Home</a>
-                <h1>Login</h1>
-                <p> Have you got an account? </p>
-                <form>
-                <input type="text" name="username" placeholder="username"></input>
-                <input type="text" name="email" placeholder="email"></input>
-                </form>
-                <p> Do you need to Sign up? </p>
-                <button>Register with Google</button>
-                <button>Register with Email </button>
-                </div>
-
-                `
-            )
-        }catch(error){console.log(error)}
     }
+
+   
+
+    
+
 }
 
 module.exports= PatientController;
